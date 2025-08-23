@@ -121,6 +121,11 @@
   İlerleyen zamanlarda proje farklı mikro servislere bölündüğünde bu eventlerin yayınlamak ve dinlemek için bir Message Broker (RabbitMQ, Kafka) teknolojisi kullanılmalı.
 </p>
 
+<img width="1390" height="152" alt="Event" src="https://github.com/user-attachments/assets/d3307ffd-3245-42b5-8318-18000dd386e3" />
+
+<img width="1462" height="497" alt="EventPublishing" src="https://github.com/user-attachments/assets/466c4267-d747-4d26-92a4-51bac70a0394" />
+
+
 <h2>User Case' ler</h2>
 <p>
   Bu projede basit bir e-ticaret sitesinin backend' de gerçekleşen bazı use caseler implemente edilmiştir. Bu projede implemente edilen use caseler aşağıdaki gibidir:
@@ -246,4 +251,75 @@
     <small>• Brute‑force saldırılarını yavaşlatır.</small>
   </li>
 </ul>
+
+
+<h2>Pagination ve ToPage() Extention</h2>
+
+<p>
+  “Pagination” (sayfalama), genellikle bir veri kümesinin tamamını tek seferde göstermek yerine, küçük parçalara veya sayfalara bölerek sunma yöntemidir. Bu, özellikle web uygulamalarında veya büyük veri tabanlarında kullanılır. Amaç hem performansı artırmak hem de kullanıcı deneyimini iyileştirmektir.
+</p>
+
+<h3>Pagination Türler</h3>
+
+<p>
+  <b>Offset-based Pagination:</b> Belirli bir başlangıç noktası ve limit kullanılır. Örn: SQL’de LIMIT 20 OFFSET 40. </br>
+  <b>Cursor-based Pagination:</b> Her kaydın benzersiz bir işaretçisi (cursor) kullanılır. Büyük veri ve sürekli güncellenen listelerde daha etkilidir.
+</p>
+
+<h3>ToPage Extention</h3>
+
+<p>
+  ToPage() extention, IQueryable<T> türündeki veri sorgularına sayfalama (pagination) özelliği ekleyen bir extension method’tur. Cursor-based pagination mantığını kullanır ve verileri artan veya azalan sırada sayfalara bölebilir.
+</p>
+
+<ul>
+  <li>
+      <b>Parametreler:</b> Page sınıfı, sayfa boyutu (Take), sayfa yönü (IsDescending) ve başlangıç noktası (Offset) bilgilerini taşır.
+    </li>
+  <li>
+      <b>Çalışma Mantığı:</b>
+      Eğer IsDescending true ise; offset belirtilmişse, sadece Id değeri Offset’ten küçük olan kayıtlar seçilir.
+      Kayıtlar Id alanına göre azalan sırada sıralanır ve Take kadar kayıt alınır.
+      Eğer IsDescending false ise; offset belirtilmişse, sadece Id değeri Offset’ten büyük olan kayıtlar seçilir.
+      Kayıtlar artan sırada sıralanır ve Take kadar kayıt alınır.
+    </li>
+    <li>
+      <b>Avantajları:</b>
+      Büyük veri kümelerinde performanslıdır, çünkü yalnızca gerekli kayıtları sorgular.
+      Kullanıcı arayüzünde sayfalar halinde veri sunulmasını sağlar.
+      Offset değeri sayesinde önceki sayfaların tekrar yüklenmesi engellenir (cursor-based pagination).
+    </li>
+    <li>
+      <b>Kapsam:</b> Entity sınıfını temel alan tüm tipler için çalışır (where T : Entity). Bu sayede her entity’de bulunan Id alanı üzerinden sayfalama yapılabilir.
+    </li>
+</ul>
+
+<img width="1312" height="487" alt="ToPage" src="https://github.com/user-attachments/assets/7f189a0d-7f59-45d5-b44d-d982dea16f14" />
+
+<img width="843" height="55" alt="Page" src="https://github.com/user-attachments/assets/002d048a-1820-4d51-931b-ccfc552a1c15" />
+
+<h2>Queryable Mappers And Query Repositories</h2>
+
+<h3>Queryable Mappers</h3>
+<p>
+  Entity den DTO ya mapping yapand extention methodlardır. Bir IQueryable<TEntity> alıp, IQueryable<Dto> döndür.
+  Böylece veritabanında LINQ query çalıştırılırken, gereksiz dataların çekilmesi engellenir.
+</p>
+
+<img width="1417" height="673" alt="QueryableMapper" src="https://github.com/user-attachments/assets/0f83b106-22a0-44f5-ad1c-ac6bd7632648" />
+
+<h3>Query Repository</h3>
+
+<p>
+  Query Repository' ler ise 0Read-only, performans odaklı, DTO veya projection döndüren, veri okuma işlemlerini yöneten repository' lerdir.
+</p>
+
+<img width="1137" height="727" alt="QueryRepository" src="https://github.com/user-attachments/assets/8b0eae72-fc46-475a-a3e3-bb94ee02e8dd" />
+
+
+
+  
+
+
+
 

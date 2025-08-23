@@ -89,10 +89,13 @@
   Kimliği ve state' i olan neslerdir. Örnek Order, OrderItem
 </p>
 
+<img width="1047" height="572" alt="entity" src="https://github.com/user-attachments/assets/9bab123e-2c4c-46e5-b6fb-e42be8eec26a" />
+
 <h3>Value Object</h3>
 <p>
-  Kimliği ve state' i olmayan neslerdir. Örnek OrderState.
+  Kimliği ve state' i olmayan neslerdir. Örnek Phone Number
 </p>
+<img width="951" height="450" alt="ValueObject" src="https://github.com/user-attachments/assets/b9ee7be6-577c-447d-b24b-1e8f66331036" />
 
 <h3>Aggregate Root</h3>
 
@@ -101,11 +104,15 @@
   Diğer entity veya value object’lere dışarıdan doğrudan erişilemez, root üzerinden işlem yapılır. Örnek Order. OrderItem' lar ve OrderState Order Aggregate Root' u ile yönetilir.
 </p>
 
+<img width="600" height="658" alt="aggregateRoot" src="https://github.com/user-attachments/assets/680489ce-4139-4350-b79b-3a4bad8e94e1" />
+
 <h3>Domain Service</h3>
 <p>
   Bir işlemi gerçekleştirmek için birden fazla aggregate root' un state' ne ihtiyaç duduğumuzu düşünelim. Bu durumda Domain service yazılmalı. Örneğin sepete bir ürün eklemek isteyelim.
   Bu ürünün eklenebilmesi için yeterli stoğa sahip olması lazım. Yani ürünün stock bilgisine ihtiyacımız var.
 </p>
+
+<img width="1271" height="422" alt="Screenshot 2025-08-23 205011" src="https://github.com/user-attachments/assets/284ad108-b103-45e3-96b4-ee1c6a1bc029" />
 
 <h3>Aggregate Root' lar arası haberleşme</h3>
 <p>
@@ -208,4 +215,35 @@
 </p>
 
 <img width="875" height="680" alt="confırmCart" src="https://github.com/user-attachments/assets/afdb1084-8cd6-4d9f-8cc9-ab30e85a3c78" />
+
+<h2>Data Protection</h2>
+
+<p>
+  Bu projede şifreleri ve tokenları güvenle veri tabanında saklamak için PBKDF2 algoritması kullanıldı.
+</p>
+
+<h3>PBKDF2 Algorithm</h3>
+<p >
+  PBKDF2, zayıf/parola tabanlı girdilerden güvenli anahtarlar üretmek için tasarlanmış bir anahtar türetme fonksiyonudur.
+</p>
+
+<h4>Amaç</h4>
+<ul>
+  <li>Zayıf/parola tabanlı girişleri (ör. kullanıcı şifreleri) alıp,</li>
+  <li>Daha güvenli, brute‑force ve rainbow table saldırılarına karşı dayanıklı hale getirmek.</li>
+</ul>
+
+<h4>Nasıl Çalışır?</h4>
+<p>
+  PBKDF2 temelde üç parametre alır:
+</p>
+<ul>
+  <li><strong>Parola (Password)</strong> — Kullanıcının girdiği şifre.</li>
+  <li><strong>Tuz (Salt)</strong> — Rastgele ek veri (parolaya eklenir).<br/>
+  <small>• Aynı şifrenin farklı sonuç üretmesini sağlar.<br/>• Rainbow table saldırılarını engeller.</small>
+  </li>
+  <li><strong>Iterasyon Sayısı (Iteration Count)</strong> — Hash’in kaç kez tekrar edileceği.<br/>
+    <small>• Brute‑force saldırılarını yavaşlatır.</small>
+  </li>
+</ul>
 

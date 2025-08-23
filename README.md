@@ -302,7 +302,7 @@
 
 <h3>Queryable Mappers</h3>
 <p>
-  Entity den DTO ya mapping yapand extention methodlardır. Bir IQueryable<TEntity> alıp, IQueryable<Dto> döndür.
+  Entity den DTO ya mapping yapand extention methodlardır. Bir IQueryable&lt;TEntity&gt; alıp, IQueryable&lt;Dto&gt; döndür.
   Böylece veritabanında LINQ query çalıştırılırken, gereksiz dataların çekilmesi engellenir.
 </p>
 

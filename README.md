@@ -263,7 +263,7 @@
   Bu projede şifreleri ve tokenları güvenle veri tabanında saklamak için PBKDF2 algoritması kullanıldı.
 </p>
 
-<h3 id="h61">6-1) PBKDF2 Algorithm</h3>
+<h3 id="id61">6-1) PBKDF2 Algorithm</h3>
 <p>
   PBKDF2, zayıf/parola tabanlı girdilerden güvenli anahtarlar üretmek için tasarlanmış bir anahtar türetme fonksiyonudur.
 </p>

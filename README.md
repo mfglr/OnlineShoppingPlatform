@@ -316,6 +316,29 @@
 
 <img width="1137" height="727" alt="QueryRepository" src="https://github.com/user-attachments/assets/8b0eae72-fc46-475a-a3e3-bb94ee02e8dd" />
 
+<h2>Generic Repository Pattern</h2>
+
+<p>
+  <b>Repository Pattern</b>, veri tabanına erişim kodlarını (CRUD işlemleri gibi) soyutlayarak, domain veya business katmanını veri erişim detaylarından ayırır.
+Business logic katmanı, veriye nasıl erişildiğini bilmeden sadece repository üzerinden işlem yapar.
+</p>
+<p>
+  <b>Generic Repository Pattern</b> ise, Repository Pattern’in generic (tüm entity’ler için ortak) bir hale getirilmiş versiyonudur.
+Yani her entity için ayrı repository yazmak yerine, tek bir generic repository sınıfı yazılır ve bu sınıf tüm entity’lerde kullanılabilir.
+</p>
+
+<img width="1126" height="473" alt="genericRepository" src="https://github.com/user-attachments/assets/36d76390-21a1-40b1-8853-fae79e6dc4d4" />
+
+
+<h2>Kimlik Doğrulama(Authentication) ve Yetkilendirme(Authorization)</h2>
+
+<p>
+  Kimlik doğrulama ve yetkilendirme için, JSON Web Token (JWT) ve Refresh Token çifti kullanılmıştır. JWT, kullanıcının kimliğini veya yetkilerini temsil eden, imzalanmış bir JSON nesnesidir.
+  Refresh Token ise JWT( access token)' u güncellemek için kullanılan hashlenmiş bir tokendir.
+</p>
+
+<img width="1247" height="647" alt="accessTokenGenerator" src="https://github.com/user-attachments/assets/d3dccb87-f618-44e3-9cb3-484fd4b72b96" />
+
 
 
   

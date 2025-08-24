@@ -45,7 +45,7 @@
 
 10. [Kimlik Doğrulama (Authentication) ve Yetkilendirme (Authorization)](#10-kimlik-doğrulamaauthentication-ve-yetkilendirmeauthorization)  
 
-<a href="#test">11. AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method </a>
+11. [AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method](#appexception-globalerrorhandlermiddleware-writeappexceptionasync-extention-method)
 
 
 ## 1) Kullanılan Teknoloji, Mimari ve Tasarımlar
@@ -385,7 +385,7 @@ Yani her entity için ayrı repository yazmak yerine, tek bir generic repository
 <img width="1247" height="647" alt="accessTokenGenerator" src="https://github.com/user-attachments/assets/d3dccb87-f618-44e3-9cb3-484fd4b72b96" />
 
 
-<h2 id="test">AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method</h2>
+## 11) AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method
 
 <p>
   AppException, Exception sınıfından miras alan ve hata kodu (status code)' nu saklayan bir sınıftır. WriteAppExceptionAsync extention methodu ise HttpContext

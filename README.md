@@ -20,8 +20,8 @@
    3.4 [Domain Service](#3-4-domain-service)  
    3.5 [Aggregate Root'lar Arası Haberleşme](#3-5-aggregate-roots-lar-arası-haberleşme)  
 
-4. [User Case'ler](#4-user-caseler)  
-   4.1 [Cart (Sepet)](#4-1-cart-sepet)  
+4. [User Case'ler](#4-user-caseler)
+   4.1 [Cart (Sepet)](#4-1-cart-sepet)
    4.2 [Order (Sipariş)](#4-2-order-sipariş)  
    4.3 [Product (Ürün)](#4-3-product-ürün)  
    4.4 [Category (Kategori)](#4-4-category-kategori)  

@@ -5,6 +5,7 @@ using Infrastructure.CategoryAggregate;
 using Infrastructure.Contexts;
 using Infrastructure.InfrastructureServices;
 using Infrastructure.InfrastructureServices.EmailService;
+using Infrastructure.MaintenanceAggregate;
 using Infrastructure.OrderAggregate;
 using Infrastructure.ProductAggregate;
 using Infrastructure.ProductUserLikeAggregate;
@@ -25,6 +26,7 @@ namespace Infrastructure
                 .AddCartAggregateServices()
                 .AddProductAggregateServices()
                 .AddProductUserLikeServices()
+                .AddMaintenanceAggregateServices()
                 .AddQueryRepositories()
                 .AddScoped<IUnitOfWork,UnitOfWork.UnitOfWork>()
                 .AddScoped<IUserAccessor, UserAccessor>()

@@ -1,5 +1,6 @@
 ﻿using Domain.CartAggregate.Entities;
 using Domain.CategoryAggregate.Entities;
+using Domain.MaintenanceAggregate.Entities;
 using Domain.OrderAggregate.Entities;
 using Domain.ProductAggregate.Entities;
 using Domain.ProductUserLikeAggregate.Entities;
@@ -19,6 +20,8 @@ namespace Infrastructure.Contexts
         public DbSet<Cart> Carts { get; private set; }
         public DbSet<Category> Categories { get; private set; }
         public DbSet<ProductUserLike> ProductUserLikes { get; private set; }
+        public DbSet<Maintenance> Maintenances { get; private set; }
+        
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -16,5 +16,12 @@ namespace Application.Extentions
             return int.Parse(value);
         }
 
+        public static int? GetUserId(this HttpContext? context)
+        {
+            var value = context?.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+            if(value == null) return null;
+            return int.Parse(value);
+        }
+
     }
 }

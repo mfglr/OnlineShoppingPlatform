@@ -17,7 +17,7 @@ namespace OnlineShoppingPlatform.Middlewares
             {
                 await context.WriteAppExceptionAsync(ex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await context.WriteAppExceptionAsync(new ServerSideException());
             }

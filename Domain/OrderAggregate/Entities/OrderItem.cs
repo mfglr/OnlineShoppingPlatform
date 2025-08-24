@@ -10,6 +10,7 @@ namespace Domain.OrderAggregate.Entities
         public string Name { get; private set; }
         public decimal Price { get; private set; }
         public int Quantity { get; private set; }
+
         public OrderItem(int productId, string name, decimal price, int quantity)
         {
             if (quantity <= 0)

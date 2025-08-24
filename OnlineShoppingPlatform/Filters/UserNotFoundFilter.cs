@@ -1,5 +1,4 @@
-﻿using Application.Exceptions;
-using Application.InfrastructureServices;
+﻿using Application.InfrastructureServices;
 using Domain.UserAggregate.Abstracts;
 using Domain.UserAggregate.Exceptions;
 using Microsoft.AspNetCore.Mvc.Filters;

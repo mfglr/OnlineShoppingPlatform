@@ -6,21 +6,21 @@ namespace Application.Extentions
 {
     public static class HttpContextExtentions
     {
-        public static int GetRequiredUserId(this HttpContext? context)
+        public static Guid GetRequiredUserId(this HttpContext? context)
         {
             if(context == null) throw new NotAuthorizedException();
 
             var value =
                 context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value ??
                 throw new NotAuthorizedException();
-            return int.Parse(value);
+            return Guid.Parse(value);
         }
 
-        public static int? GetUserId(this HttpContext? context)
+        public static Guid? GetUserId(this HttpContext? context)
         {
             var value = context?.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             if(value == null) return null;
-            return int.Parse(value);
+            return Guid.Parse(value);
         }
 
     }

@@ -1,4 +1,4 @@
 ﻿namespace Core
 {
-    public record Page(int? Offset, int Take, bool IsDescending);
+    public record Page(Guid? Offset, int Take, bool IsDescending);
 }

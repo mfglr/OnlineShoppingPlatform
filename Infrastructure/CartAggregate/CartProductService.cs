@@ -7,7 +7,7 @@ namespace Infrastructure.CartAggregate
     internal class CartProductService(AppDbContext context) : ICartProductService
     {
         private readonly AppDbContext _context = context;
-        public async Task<int> GetProductStock(int productId, CancellationToken cancellationToken)
+        public async Task<int> GetProductStock(Guid productId, CancellationToken cancellationToken)
             => 
                 (await _context.Products.FirstOrDefaultAsync(x => x.Id == productId, cancellationToken))?.StockQuantity ??
                 await Task.FromResult(0);

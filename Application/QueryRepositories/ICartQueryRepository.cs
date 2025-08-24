@@ -4,6 +4,6 @@ namespace Application.QueryRepositories
 {
     public interface ICartQueryRepository
     {
-        Task<CartResponseDto?> GetByIdAsync(int id, CancellationToken cancellationToken);
+        Task<CartResponseDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
     }
 }

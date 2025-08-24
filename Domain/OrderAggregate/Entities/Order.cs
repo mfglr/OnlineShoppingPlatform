@@ -6,14 +6,14 @@ namespace Domain.OrderAggregate.Entities
 {
     public class Order : Entity, IAggregateRoot
     {
-        public int UserId { get; private set; }
+        public Guid UserId { get; private set; }
         private readonly List<OrderItem> _items = [];
         public IReadOnlyCollection<OrderItem> Items => _items;
         public OrderState State { get; private set; }
 
         private Order() { }
 
-        public Order(int userId, IEnumerable<OrderItem> orderItems)
+        public Order(Guid userId, IEnumerable<OrderItem> orderItems)
         {
             if (!orderItems.Any())
                 throw new OrderItemRequiredException();

@@ -2,5 +2,5 @@
 
 namespace Application.Commands.ProductUserLikeAggregate.LikeProduct
 {
-    public record LikeProductDto(int ProductId) : IRequest;
+    public record LikeProductDto(Guid ProductId) : IRequest;
 }

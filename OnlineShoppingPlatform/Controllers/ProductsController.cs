@@ -31,23 +31,23 @@ namespace OnlineShoppingPlatform.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task Delete(int id, CancellationToken cancellationToken)
+        public async Task Delete(Guid id, CancellationToken cancellationToken)
             => await _sender.Send(new DeleteProductDto(id), cancellationToken);
 
         [HttpGet("{id}")]
-        public async Task<ProductResponseDto> GetById(int id, CancellationToken cancellationToken)
+        public async Task<ProductResponseDto> GetById(Guid id, CancellationToken cancellationToken)
             => await _sender.Send(new GetProductByIdDto(id), cancellationToken);
 
         [HttpGet]
-        public async Task<List<ProductResponseDto>> GetAll([FromQuery] int? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<ProductResponseDto>> GetAll([FromQuery] Guid? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetAllProductsDto(offset,take, isDescending), cancellationToken);
 
         [HttpGet("{key}")]
-        public async Task<List<ProductResponseDto>> Search(string key, [FromQuery] int? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<ProductResponseDto>> Search(string key, [FromQuery] Guid? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new SearchProductsDto(key, offset, take, isDescending), cancellationToken);
 
         [HttpGet("{categoryId}")]
-        public async Task<List<ProductResponseDto>> GetByCategoryId(int categoryId, [FromQuery] int? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<ProductResponseDto>> GetByCategoryId(Guid categoryId, [FromQuery] Guid? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetProductsByCategoryIdDto(offset, take, isDescending, categoryId), cancellationToken);
     }
 }

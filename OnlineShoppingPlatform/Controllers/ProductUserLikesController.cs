@@ -22,12 +22,12 @@ namespace OnlineShoppingPlatform.Controllers
 
         [HttpDelete("{productId}")]
         [Authorize(Roles = "Customer, Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task Delete(int productId, CancellationToken cancellationToken)
+        public async Task Delete(Guid productId, CancellationToken cancellationToken)
             => await _sender.Send(new DislikeDto(productId), cancellationToken);
 
         [HttpGet]
         [Authorize(Roles = "Customer, Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<List<ProductUserLikeResponseDto>> Get([FromQuery]int? offset, [FromQuery]int take, [FromQuery]bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<ProductUserLikeResponseDto>> Get([FromQuery] Guid? offset, [FromQuery]int take, [FromQuery]bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetProductsLikedDto(offset,take,isDescending), cancellationToken);
     }
 }

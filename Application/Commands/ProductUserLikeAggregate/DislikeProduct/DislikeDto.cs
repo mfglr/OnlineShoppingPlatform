@@ -2,5 +2,5 @@
 
 namespace Application.Commands.ProductUserLikeAggregate.DislikeProduct
 {
-    public record DislikeDto(int ProductId) : IRequest;
+    public record DislikeDto(Guid ProductId) : IRequest;
 }

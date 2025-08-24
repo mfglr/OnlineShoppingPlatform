@@ -2,5 +2,5 @@
 
 namespace Core.Events
 {
-    public record UserDeletedEvent(int UserId) : INotification;
+    public record UserDeletedEvent(Guid UserId) : INotification;
 }

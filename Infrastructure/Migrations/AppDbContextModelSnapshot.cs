@@ -24,8 +24,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.CartAggregate.Entities.Cart", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -40,20 +40,18 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.CartAggregate.Entities.CartItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -70,11 +68,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.CategoryAggregate.Entities.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -89,11 +85,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.MaintenanceAggregate.Entities.Maintenance", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -113,8 +107,8 @@ namespace Infrastructure.Migrations
                     b.Property<string>("UserAgent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -123,11 +117,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.OrderAggregate.Entities.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -138,8 +130,8 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -148,11 +140,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.OrderAggregate.Entities.OrderItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -161,14 +151,14 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -185,14 +175,12 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.ProductAggregate.Entities.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -219,23 +207,21 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.ProductUserLikeAggregate.Entities.ProductUserLike", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -244,11 +230,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.UserAggregate.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -286,8 +270,8 @@ namespace Infrastructure.Migrations
                 {
                     b.OwnsOne("Domain.CategoryAggregate.ValueObjects.CategoryName", "Name", b1 =>
                         {
-                            b1.Property<int>("CategoryId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CategoryId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -318,8 +302,8 @@ namespace Infrastructure.Migrations
                 {
                     b.OwnsOne("Domain.ProductAggregate.ValueObjects.ProductName", "Name", b1 =>
                         {
-                            b1.Property<int>("ProductId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("ProductId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -341,8 +325,8 @@ namespace Infrastructure.Migrations
                 {
                     b.OwnsOne("Domain.UserAggregate.ValueObjects.Token", "EmailConfirmationToken", b1 =>
                         {
-                            b1.Property<int>("UserId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("ExpiredAt")
                                 .HasColumnType("datetime2");
@@ -361,8 +345,8 @@ namespace Infrastructure.Migrations
 
                     b.OwnsOne("Domain.UserAggregate.ValueObjects.Token", "PasswordResetToken", b1 =>
                         {
-                            b1.Property<int>("UserId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("ExpiredAt")
                                 .HasColumnType("datetime2");
@@ -381,8 +365,8 @@ namespace Infrastructure.Migrations
 
                     b.OwnsOne("Domain.UserAggregate.ValueObjects.Token", "RefreshToken", b1 =>
                         {
-                            b1.Property<int>("UserId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("ExpiredAt")
                                 .HasColumnType("datetime2");
@@ -401,8 +385,8 @@ namespace Infrastructure.Migrations
 
                     b.OwnsOne("Domain.UserAggregate.ValueObjects.Email", "Email", b1 =>
                         {
-                            b1.Property<int>("UserId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -418,8 +402,8 @@ namespace Infrastructure.Migrations
 
                     b.OwnsOne("Domain.UserAggregate.ValueObjects.Password", "Password", b1 =>
                         {
-                            b1.Property<int>("UserId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<byte[]>("Hash")
                                 .IsRequired()
@@ -435,8 +419,8 @@ namespace Infrastructure.Migrations
 
                     b.OwnsOne("Domain.UserAggregate.ValueObjects.PhoneNumber", "PhoneNumber", b1 =>
                         {
-                            b1.Property<int>("UserId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Value")
                                 .IsRequired()

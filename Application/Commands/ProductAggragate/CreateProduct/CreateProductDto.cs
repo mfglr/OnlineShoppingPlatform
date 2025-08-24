@@ -2,5 +2,5 @@
 
 namespace Application.Commands.ProductAggragate.CreateProduct
 {
-    public record CreateProductDto(int CategoryId, string Name, decimal Price, int StockQuantity) : IRequest;
+    public record CreateProductDto(Guid CategoryId, string Name, decimal Price, int StockQuantity) : IRequest;
 }

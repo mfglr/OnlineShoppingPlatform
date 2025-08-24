@@ -23,17 +23,17 @@ namespace OnlineShoppingPlatform.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Customer, Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<List<OrderResponseDto>> GetOrders([FromQuery]int? offset, [FromQuery]int take, [FromQuery]bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<OrderResponseDto>> GetOrders([FromQuery] Guid? offset, [FromQuery]int take, [FromQuery]bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetOrdersDto(offset, take, isDescending),cancellationToken);
 
         [HttpGet]
         [Authorize(Roles = "Customer, Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<List<OrderResponseDto>> GetCancelledOrders([FromQuery] int? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<OrderResponseDto>> GetCancelledOrders([FromQuery] Guid? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetCancelledOrdersDto(offset, take, isDescending), cancellationToken);
 
         [HttpGet]
         [Authorize(Roles = "Customer, Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<List<OrderResponseDto>> GetSuccessOrders([FromQuery] int? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<OrderResponseDto>> GetSuccessOrders([FromQuery] Guid? offset, [FromQuery] int take, [FromQuery] bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetSuccessOrdersDto(offset, take, isDescending), cancellationToken);
 
     }

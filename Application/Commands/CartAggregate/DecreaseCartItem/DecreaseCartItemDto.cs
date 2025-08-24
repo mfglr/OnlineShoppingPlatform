@@ -2,5 +2,5 @@
 
 namespace Application.Commands.CartAggregate.DecreaseCartItem
 {
-    public record DecreaseCartItemDto(int ProductId) : IRequest;
+    public record DecreaseCartItemDto(Guid ProductId) : IRequest;
 }

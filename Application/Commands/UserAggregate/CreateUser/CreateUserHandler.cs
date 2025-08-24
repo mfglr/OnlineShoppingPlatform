@@ -26,6 +26,7 @@ namespace Application.Commands.UserAggregate.CreateUser
                 throw new EmailIsAlreadyTakenException();
 
             var user = new User(email, password);
+            user.Create();
             await _userRepository.CreateAsync(user, cancellationToken);
 
             await _publisher.Publish(

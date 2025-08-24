@@ -8,10 +8,10 @@ namespace Infrastructure.OrderAggregate
 {
     internal class OrderRepository(AppDbContext context) : Repository<Order>(context), IOrderRepository
     {
-        public Task<List<Order>> GetOrdersByUserId(int userId, CancellationToken cancellationToken)
+        public Task<List<Order>> GetOrdersByUserId(Guid userId, CancellationToken cancellationToken)
             => _context.Orders.Where(x => x.UserId == userId).ToListAsync(cancellationToken);
 
-        public override Task<Order?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public override Task<Order?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
             => _context.Orders.Include(x => x.Items).FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 }

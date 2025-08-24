@@ -2,5 +2,5 @@
 
 namespace Application.Commands.CartAggregate.AddCartItem
 {
-    public record AddCartItemDto(int ProductId) : IRequest;
+    public record AddCartItemDto(Guid ProductId) : IRequest;
 }

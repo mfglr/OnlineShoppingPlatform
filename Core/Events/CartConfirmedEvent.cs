@@ -2,6 +2,6 @@
 
 namespace Core.Events
 {
-    public record CartConfirmedEvent_CartItem(int ProductId, int Quantity);
-    public record CartConfirmedEvent(int UserId, IEnumerable<CartConfirmedEvent_CartItem> Items) : INotification;
+    public record CartConfirmedEvent_CartItem(Guid ProductId, int Quantity);
+    public record CartConfirmedEvent(Guid UserId, IEnumerable<CartConfirmedEvent_CartItem> Items) : INotification;
 }

@@ -2,5 +2,5 @@
 
 namespace Application.Commands.CartAggregate.RemoveCartItem
 {
-    public record RemoveCartItemDto(int ProductId) : IRequest;
+    public record RemoveCartItemDto(Guid ProductId) : IRequest;
 }

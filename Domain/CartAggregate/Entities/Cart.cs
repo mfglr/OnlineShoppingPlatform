@@ -10,10 +10,10 @@ namespace Domain.CartAggregate.Entities
 
         private Cart() { }
 
-        public Cart(int userId) => Id = userId;
+        public Cart(Guid userId) => Id = userId;
 
         public bool IsEmpty() => _items.Count == 0;
-        public int GetItemQuantity(int productId) => _items.FirstOrDefault(x => x.ProductId == productId)?.Quantity ?? 0;
+        public int GetItemQuantity(Guid productId) => _items.FirstOrDefault(x => x.ProductId == productId)?.Quantity ?? 0;
 
         public void Clear()
         {
@@ -27,7 +27,7 @@ namespace Domain.CartAggregate.Entities
             UpdatedAt = DateTime.UtcNow;
         }
 
-        internal void AddItem(int productId)
+        internal void AddItem(Guid productId)
         {
             var cartItem = _items.FirstOrDefault(x => x.ProductId == productId);
             if(cartItem != null)
@@ -41,7 +41,7 @@ namespace Domain.CartAggregate.Entities
 
             UpdatedAt = DateTime.UtcNow;
         }
-        public void RemoveItem(int productId)
+        public void RemoveItem(Guid productId)
         {
             var item =
                 _items.FirstOrDefault(x => x.ProductId == productId) ??
@@ -50,7 +50,7 @@ namespace Domain.CartAggregate.Entities
             _items.Remove(item);
             UpdatedAt = DateTime.UtcNow;
         }
-        internal void IncreaseItem(int productId)
+        internal void IncreaseItem(Guid productId)
         {
             var item =
                 _items.FirstOrDefault(x => x.ProductId == productId) ??
@@ -59,7 +59,7 @@ namespace Domain.CartAggregate.Entities
             
             UpdatedAt = DateTime.UtcNow;
         }
-        public void DecreaseItem(int productId)
+        public void DecreaseItem(Guid productId)
         {
             var item =
                 _items.FirstOrDefault(x => x.ProductId == productId) ??

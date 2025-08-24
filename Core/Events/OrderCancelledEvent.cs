@@ -2,6 +2,6 @@
 
 namespace Core.Events
 {
-    public record OrderCancelledEvent_Item(int ProductId, int Quantity);
-    public record OrderCancelledEvent(int OrderId, IEnumerable<OrderCancelledEvent_Item> Items) : INotification; 
+    public record OrderCancelledEvent_Item(Guid ProductId, int Quantity);
+    public record OrderCancelledEvent(Guid OrderId, IEnumerable<OrderCancelledEvent_Item> Items) : INotification; 
 }

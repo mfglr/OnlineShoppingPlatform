@@ -8,7 +8,7 @@ namespace Domain.CartAggregate.DomainServices
     {
         private readonly ICartProductService _cartProductService = cartProductService;
 
-        public async Task AddItem(Cart cart, int productId, CancellationToken cancellationToken)
+        public async Task AddItem(Cart cart, Guid productId, CancellationToken cancellationToken)
         {
             var stock = await _cartProductService.GetProductStock(productId, cancellationToken);
             
@@ -18,7 +18,7 @@ namespace Domain.CartAggregate.DomainServices
             cart.AddItem(productId);
         }
 
-        public async Task IncreaseItem(Cart cart, int productId, CancellationToken cancellationToken)
+        public async Task IncreaseItem(Cart cart, Guid productId, CancellationToken cancellationToken)
         {
             var stock = await _cartProductService.GetProductStock(productId, cancellationToken);
             if (stock < cart.GetItemQuantity(productId) + 1)

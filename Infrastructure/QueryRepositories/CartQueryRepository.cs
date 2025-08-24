@@ -31,7 +31,7 @@ namespace Infrastructure.QueryRepositories
     {
         private readonly AppDbContext _context = context;
 
-        public Task<CartResponseDto?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public Task<CartResponseDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
             => _context.Carts
                 .AsNoTracking()
                 .Where(x => x.Id == id)

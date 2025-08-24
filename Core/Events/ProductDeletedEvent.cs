@@ -2,5 +2,5 @@
 
 namespace Core.Events
 {
-    public record ProductDeletedEvent(int ProductId) : INotification;
+    public record ProductDeletedEvent(Guid ProductId) : INotification;
 }

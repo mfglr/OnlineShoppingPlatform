@@ -23,7 +23,7 @@ namespace OnlineShoppingPlatform.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task Delete(int id, CancellationToken cancellationToken)
+        public async Task Delete(Guid id, CancellationToken cancellationToken)
             => await _sender.Send(new DeleteCategoryDto(id), cancellationToken);
 
         [HttpPut]
@@ -32,7 +32,7 @@ namespace OnlineShoppingPlatform.Controllers
             => await _sender.Send(request, cancellationToken);
 
         [HttpGet]
-        public async Task<List<CategoryResponseDto>> GetAll([FromQuery]int? offset, [FromQuery]int take, [FromQuery]bool isDescending, CancellationToken cancellationToken)
+        public async Task<List<CategoryResponseDto>> GetAll([FromQuery] Guid? offset, [FromQuery]int take, [FromQuery]bool isDescending, CancellationToken cancellationToken)
             => await _sender.Send(new GetAllCategoriesDto(offset, take, isDescending), cancellationToken);
     }
 }

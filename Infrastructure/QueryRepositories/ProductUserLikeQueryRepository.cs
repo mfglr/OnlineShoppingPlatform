@@ -41,7 +41,7 @@ namespace Infrastructure.QueryRepositories
     {
         private readonly AppDbContext _context = context;
 
-        public Task<List<ProductUserLikeResponseDto>> GetByUserId(int userId, Page page, CancellationToken cancellationToken)
+        public Task<List<ProductUserLikeResponseDto>> GetByUserId(Guid userId, Page page, CancellationToken cancellationToken)
             => _context.ProductUserLikes
                 .Where(x => x.UserId == userId)
                 .ToPage(page)

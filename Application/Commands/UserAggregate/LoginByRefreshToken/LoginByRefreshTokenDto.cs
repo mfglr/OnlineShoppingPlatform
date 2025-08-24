@@ -2,5 +2,5 @@
 
 namespace Application.Commands.UserAggregate.LoginByRefreshToken
 {
-    public record LoginByRefreshTokenDto(int Id, string RefreshToken) : IRequest<LoginByRefreshTokenResponseDto>;
+    public record LoginByRefreshTokenDto(Guid Id, string RefreshToken) : IRequest<LoginByRefreshTokenResponseDto>;
 }

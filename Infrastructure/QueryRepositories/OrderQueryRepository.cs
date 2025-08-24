@@ -33,7 +33,7 @@ namespace Infrastructure.QueryRepositories
     {
         private readonly AppDbContext _context = context;
 
-        public Task<List<OrderResponseDto>> GetOrdersByUserIdAsync(int userId, Page page, CancellationToken cancellationToken)
+        public Task<List<OrderResponseDto>> GetOrdersByUserIdAsync(Guid userId, Page page, CancellationToken cancellationToken)
             => _context.Orders
                 .AsNoTracking()
                 .Where(x => x.UserId == userId)
@@ -41,7 +41,7 @@ namespace Infrastructure.QueryRepositories
                 .ToOrderReponseDto()
                 .ToListAsync(cancellationToken);
 
-        public Task<List<OrderResponseDto>> GetOrdersByUserIdAndStateAsync(int userId, OrderState state, Page page, CancellationToken cancellationToken)
+        public Task<List<OrderResponseDto>> GetOrdersByUserIdAndStateAsync(Guid userId, OrderState state, Page page, CancellationToken cancellationToken)
             => _context.Orders
                 .AsNoTracking()
                 .Where(x => x.UserId == userId && x.State == state)

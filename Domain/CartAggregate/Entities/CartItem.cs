@@ -5,11 +5,11 @@ namespace Domain.CartAggregate.Entities
 {
     public class CartItem : Entity
     {
-        public int CartId { get; private set; }
-        public int ProductId { get; private set; }
+        public Guid CartId { get; private set; }
+        public Guid ProductId { get; private set; }
         public int Quantity { get; private set; }
 
-        public CartItem(int productId, int quantity)
+        public CartItem(Guid productId, int quantity)
         {
             if (quantity < 1)
                 throw new CartItemQuantityException();
@@ -19,7 +19,7 @@ namespace Domain.CartAggregate.Entities
         }
 
 
-        internal static CartItem Create(int productId) => new(productId, 1) { CreatedAt = DateTime.UtcNow };
+        internal static CartItem Create(Guid productId) => new(productId, 1) { CreatedAt = DateTime.UtcNow };
         public void IncreaseQuantity()
         {
             Quantity++;

@@ -2,5 +2,5 @@
 
 namespace Application.Queries.ProductAggregate.GetProductById
 {
-    public record GetProductByIdDto(int Id) : IRequest<ProductResponseDto>;
+    public record GetProductByIdDto(Guid Id) : IRequest<ProductResponseDto>;
 }

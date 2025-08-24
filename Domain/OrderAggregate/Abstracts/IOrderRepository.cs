@@ -5,6 +5,6 @@ namespace Domain.OrderAggregate.Abstracts
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        Task<List<Order>> GetOrdersByUserId(int userId, CancellationToken cancellationToken);
+        Task<List<Order>> GetOrdersByUserId(Guid userId, CancellationToken cancellationToken);
     }
 }

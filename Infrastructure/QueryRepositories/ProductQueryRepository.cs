@@ -39,7 +39,7 @@ namespace Infrastructure.QueryRepositories
     {
         private readonly AppDbContext _context = context;
 
-        public Task<ProductResponseDto?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public Task<ProductResponseDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
             => _context.Products
                 .AsNoTracking()
                 .Where(x => x.Id == id)
@@ -61,7 +61,7 @@ namespace Infrastructure.QueryRepositories
                 .ToProductResponseDto(_context)
                 .ToListAsync(cancellationToken);
 
-        public Task<List<ProductResponseDto>> GetByCategoryId(int categoryId, Page page, CancellationToken cancellationToken)
+        public Task<List<ProductResponseDto>> GetByCategoryId(Guid categoryId, Page page, CancellationToken cancellationToken)
             => _context.Products
                 .AsNoTracking()
                 .Where(x => x.CategoryId == categoryId)

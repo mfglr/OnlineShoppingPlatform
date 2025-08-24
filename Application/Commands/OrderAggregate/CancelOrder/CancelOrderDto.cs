@@ -2,5 +2,5 @@
 
 namespace Application.Commands.OrderAggregate.CancelOrder
 {
-    public record CancelOrderDto(int Id) : IRequest;
+    public record CancelOrderDto(Guid Id) : IRequest;
 }

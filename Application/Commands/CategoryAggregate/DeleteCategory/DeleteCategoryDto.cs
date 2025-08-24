@@ -2,5 +2,5 @@
 
 namespace Application.Commands.CategoryAggregate.DeleteCategory
 {
-    public record DeleteCategoryDto(int CategoryId) : IRequest;
+    public record DeleteCategoryDto(Guid CategoryId) : IRequest;
 }

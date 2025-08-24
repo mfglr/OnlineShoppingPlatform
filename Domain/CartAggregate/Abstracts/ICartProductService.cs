@@ -2,6 +2,6 @@
 {
     public interface ICartProductService
     {
-        Task<int> GetProductStock(int productId, CancellationToken cancellationToken);
+        Task<int> GetProductStock(Guid productId, CancellationToken cancellationToken);
     }
 }

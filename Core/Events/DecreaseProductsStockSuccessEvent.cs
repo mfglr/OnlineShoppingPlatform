@@ -2,6 +2,6 @@
 
 namespace Core.Events
 {
-    public record DecreaseProductsStockSuccessEvent_Item(int ProductId, string Name, decimal Price, int Quantity);
-    public record DecreaseProductsStockSuccessEvent(int UserId, IEnumerable<DecreaseProductsStockSuccessEvent_Item> Items) : INotification;
+    public record DecreaseProductsStockSuccessEvent_Item(Guid ProductId, string Name, decimal Price, int Quantity);
+    public record DecreaseProductsStockSuccessEvent(Guid UserId, IEnumerable<DecreaseProductsStockSuccessEvent_Item> Items) : INotification;
 }

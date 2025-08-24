@@ -6,7 +6,7 @@ namespace Domain.ProductAggregate.Entities
 {
     public class Product : Entity, IAggregateRoot
     {
-        public int CategoryId { get; private set; }
+        public Guid CategoryId { get; private set; }
         public ProductName Name { get; private set; }
         public decimal Price { get; private set; }
         public int StockQuantity { get; private set; }
@@ -14,7 +14,7 @@ namespace Domain.ProductAggregate.Entities
 
         private Product() { }
 
-        public Product(int categoryId, ProductName name, decimal price, int stockQuantity)
+        public Product(Guid categoryId, ProductName name, decimal price, int stockQuantity)
         {
             if (price <= 0)
                 throw new ProductDecimalException();

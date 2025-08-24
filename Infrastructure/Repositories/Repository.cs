@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories
         public void DeleteRange(IEnumerable<E> entities)
             => _dbSet.RemoveRange(entities);
 
-        public virtual async Task<E?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public virtual async Task<E?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
             => await _dbSet.FindAsync([id], cancellationToken: cancellationToken);
     }
 }

@@ -6,7 +6,7 @@ namespace Application.QueryRepositories
 {
     public interface IOrderQueryRepository
     {
-        Task<List<OrderResponseDto>> GetOrdersByUserIdAsync(int userId, Page page, CancellationToken cancellationToken);
-        Task<List<OrderResponseDto>> GetOrdersByUserIdAndStateAsync(int userId, OrderState state, Page page, CancellationToken cancellationToken);
+        Task<List<OrderResponseDto>> GetOrdersByUserIdAsync(Guid userId, Page page, CancellationToken cancellationToken);
+        Task<List<OrderResponseDto>> GetOrdersByUserIdAndStateAsync(Guid userId, OrderState state, Page page, CancellationToken cancellationToken);
     }
 }

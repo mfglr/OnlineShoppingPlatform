@@ -2,5 +2,5 @@
 
 namespace Application.Queries.OrderAggregate
 {
-    public record OrderResponseDto(int Id, IEnumerable<OrderItemResponseDto> Items, OrderState State);
+    public record OrderResponseDto(Guid Id, IEnumerable<OrderItemResponseDto> Items, OrderState State);
 }

@@ -5,6 +5,6 @@ namespace Domain.CartAggregate.Abstracts
 {
     public interface ICartRepository : IRepository<Cart>
     {
-        Task<List<Cart>> GetCartsByProductId(int productId, CancellationToken cancellationToken);
+        Task<List<Cart>> GetCartsByProductId(Guid productId, CancellationToken cancellationToken);
     }
 }

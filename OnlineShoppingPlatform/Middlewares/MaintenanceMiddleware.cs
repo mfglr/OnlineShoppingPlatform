@@ -19,11 +19,14 @@ namespace OnlineShoppingPlatform.Middlewares
             var userAgent = context.Request.Headers["User-Agent"].ToString();
             int? userId = context.GetUserId();
             var statusCode = context.Response.StatusCode;
-
-            var maintenance = new Maintenance(userId, userAgent, url, ip, statusCode);
-            maintenance.Create();
-            await maintenanceRepository.CreateAsync(maintenance, CancellationToken.None);
-            await unitOfWork.CommitAsync(CancellationToken.None);
+            if(statusCode >= 400)
+            {
+                var maintenance = new Maintenance(userId, userAgent, url, ip, statusCode);
+                maintenance.Create();
+                await maintenanceRepository.CreateAsync(maintenance, CancellationToken.None);
+                await unitOfWork.CommitAsync(CancellationToken.None);
+            }
+            
         }
     }
 }

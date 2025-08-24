@@ -25,8 +25,8 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 app.UseMiddleware<MaintenanceMiddleware>();
+app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

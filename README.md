@@ -3,7 +3,7 @@
 # İçindekiler
 
 <a href="#id1">1 Kullanılan Teknoloji, Mimari ve Tasarımlar</a> </br>
-<a href="#id1_1">1.1 Bu projede kullanılan teknoloji ve paketler</a></br>
+<a href="#id1_1">1.1 Bu projede kullanılan teknoloji ve paketler</a>></br>
 <a href="#id1_2">1.2 Bu projede kullanılan mimari ve tasarımlar</a></br>
 <a href="#id2">2 Modular Monolithic Mimari</a></br>
 <a href="#id21">2.1 Monolithic (Monolitik) Mimari Nedir</a></br>
@@ -37,6 +37,7 @@
 <a href="#id10">10 Kimlik Doğrulama (Authentication) ve Yetkilendirme (Authorization)</a></br>
 <a href="#id11">11 AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method</a></br>
 <a href="#id12">12 UserNotFoundFilter ve IUserAccessor</a></br>
+<a href="#id13">13 MaintenanceMiddleware</a></br>
 
 
 <h2 id="id1">1) Kullanılan Teknoloji, Mimari ve Tasarımlar</h2>
@@ -412,3 +413,11 @@ Yani her entity için ayrı repository yazmak yerine, tek bir generic repository
 
 <img width="503" height="133" alt="IUserAccessor" src="https://github.com/user-attachments/assets/c59cf9f7-771a-479d-aca8-6d6fdb2785bb" />
 
+
+<h2 id="id13">13) MaintenanceMiddleware</h2>
+
+<p>
+  MaintenanceMiddleware kullanıcıların hatalı istekleri saklar.
+</p>
+
+<img width="1422" height="598" alt="MaintanceMiddleware" src="https://github.com/user-attachments/assets/353c15e2-5ee2-4493-9550-6208638065df" />

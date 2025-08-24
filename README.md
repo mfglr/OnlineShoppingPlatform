@@ -3,7 +3,7 @@
 # İçindekiler
 
 <a href="#id1">1 Kullanılan Teknoloji, Mimari ve Tasarımlar</a> </br>
-<a href="#id11">1.1 Bu projede kullanılan teknoloji ve paketler</a></br>
+<a href="#id1_1">1.1 Bu projede kullanılan teknoloji ve paketler</a></br>
 <a href="#id12">1.2 Bu projede kullanılan mimari ve tasarımlar</a></br>
 <a href="#id2">2 Modular Monolithic Mimari</a></br>
 <a href="#id21">2.1 Monolithic (Monolitik) Mimari Nedir</a></br>
@@ -40,7 +40,7 @@
 
 <h2 id="id1">1) Kullanılan Teknoloji, Mimari ve Tasarımlar</h2>
 
-<h3 id="id11"> 1-1) Bu projede kullanılan teknoloji ve paketler </h3>
+<h3 id="id1_1"> 1-1) Bu projede kullanılan teknoloji ve paketler </h3>
 <b><ul>
   <li>.Net 9</li>
   <li>Entity Framework Core</li>

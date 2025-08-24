@@ -4,38 +4,39 @@
 
 <a href="#id1">1 Kullanılan Teknoloji, Mimari ve Tasarımlar</a> </br>
 <a href="#id1_1">1.1 Bu projede kullanılan teknoloji ve paketler</a></br>
-<a href="#id12">1.2 Bu projede kullanılan mimari ve tasarımlar</a></br>
+<a href="#id1_2">1.2 Bu projede kullanılan mimari ve tasarımlar</a></br>
 <a href="#id2">2 Modular Monolithic Mimari</a></br>
 <a href="#id21">2.1 Monolithic (Monolitik) Mimari Nedir</a></br>
 <a href="#id211">2.1.1 Monolitik Mimarinin Dezavantajları</a></br>
 <a href="#id22">2.2 Micro Services Mimari Nedir</a></br>
 <a href="#id221">2.2.1 Micro Services Mimarinin Avantajları</a></br>
 <a href="#id23">2.3 Modular Monolithic Mimari Nedir</a></br>
-<a href="#id3">3. Domain Driven Design (DDD) Taktiksel Tasarımı</a></br>
+<a href="#id3">3 Domain Driven Design (DDD) Taktiksel Tasarımı</a></br>
 <a href="#id31">3.1 Entity</a></br>
 <a href="#id32">3.2 Value Object</a></br>
 <a href="#id33">3.3 Aggregate Root</a></br>
 <a href="#id34">3.4 Domain Service</a></br>
 <a href="#id35">3.5 Aggregate Root'lar Arası Haberleşme</a></br>
-<a href="#id4">4. User Case'ler</a></br>
+<a href="#id4">4 User Case'ler</a></br>
 <a href="#id41">4.1 Cart (Sepet)</a></br>
 <a href="#id42">4.2 Order (Sipariş)</a></br>
 <a href="#id43">4.3 Product (Ürün)</a></br>
 <a href="#id44">4.4 Category (Kategori)</a></br>
 <a href="#id45">4.5 User (Kullanıcı)</a></br>
-<a href="#id5">5. Distributed Transaction</a></br>
+<a href="#id5">5 Distributed Transaction</a></br>
 <a href="#id51">5.1 Örnek: Sepetin Onaylanması</a></br>
 <a href="#id6">6. Data Protection</a></br>
 <a href="#id61">6.1 [PBKDF2 Algorithm]</a></br>
-<a href="#id7">7. Pagination ve ToPage() Extention</a></br>
+<a href="#id7">7 Pagination ve ToPage() Extention</a></br>
 <a href="#id71">7.1 Pagination Türler</a></br>
 <a href="#id72">7.2 ToPage Extention</a></br>
-<a href="#id8">8. Queryable Mappers ve Query Repositories</a></br>
+<a href="#id8">8 Queryable Mappers ve Query Repositories</a></br>
 <a href="#id81">8.1 Queryable Mappers</a></br>
 <a href="#id82">8.2 Query Repository</a></br>
-<a href="#id9">9. Generic Repository Pattern</a></br>
-<a href="#id10">10. Kimlik Doğrulama (Authentication) ve Yetkilendirme (Authorization)</a></br>
-<a href="#id11">11. AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method</a></br>
+<a href="#id9">9 Generic Repository Pattern</a></br>
+<a href="#id10">10 Kimlik Doğrulama (Authentication) ve Yetkilendirme (Authorization)</a></br>
+<a href="#id11">11 AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method</a></br>
+<a href="#id12">12 UserNotFoundFilter ve IUserAccessor</a></br>
 
 
 <h2 id="id1">1) Kullanılan Teknoloji, Mimari ve Tasarımlar</h2>
@@ -49,7 +50,7 @@
   <li>Kullanıcılara mail göndermek için Google’ın Gmail servisi (SMTP) </li>
 </ul></b>
 
-<h3 id="id12">1-2) Bu projede kullanılan mimari ve tasarımlar</h3>
+<h3 id="id1_2">1-2) Bu projede kullanılan mimari ve tasarımlar</h3>
 <b>
   <ul>
     <li>Domain Driven Design (DDD)</li>
@@ -391,4 +392,23 @@ Yani her entity için ayrı repository yazmak yerine, tek bir generic repository
 <img width="871" height="490" alt="GlobalErrorHandlıng" src="https://github.com/user-attachments/assets/628a0843-f15f-4985-a272-da5afd49128e" />
 
 
+<h2 id="id12">12) UserNotFoundFilter ve IUserAccessor</h2>
+
+<p>
+  ASP.Net Core' da filterlar controllerın veya actionların çalışmasından önce ya da sonra çalışması gereken logicleri çalıştırmak için kullanılır. 
+</p>
+
+<p>
+  Bu projede bir kullanıcının veritabanında var olup olmadığını test eden bir filter yazılmıştır. Bu filter eğer kullanıcı veritabanında yoksa hata fırlatacak aksi halde ise
+  IUserAccessor' ın user özelliğini set edecektir.
+</p>
+<p>
+  IUserAccessor, user deponlandığı nesnedir. UserNotFoundFilter ı kullanan her actiondan erişilebilir.
+</p>
+
+
+
+<img width="1505" height="450" alt="actionFilter" src="https://github.com/user-attachments/assets/86f66a39-6378-448b-bc55-3661bb966fb3" />
+
+<img width="503" height="133" alt="IUserAccessor" src="https://github.com/user-attachments/assets/c59cf9f7-771a-479d-aca8-6d6fdb2785bb" />
 

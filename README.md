@@ -2,7 +2,7 @@
 
 # İçindekiler
 
-<a href="id1">1. Kullanılan Teknoloji, Mimari ve Tasarımlar</a>
+<a href="#id1">1. Kullanılan Teknoloji, Mimari ve Tasarımlar</a>
    1.1 [Bu projede kullanılan teknoloji ve paketler](#1-1-bu-projede-kullanılan-teknoloji-ve-paketler)  
    1.2 [Bu projede kullanılan mimari ve tasarımlar](#1-2-bu-projede-kullanılan-mimari-ve-tasarımlar)  
 

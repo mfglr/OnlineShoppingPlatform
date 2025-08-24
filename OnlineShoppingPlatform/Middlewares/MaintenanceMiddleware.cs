@@ -14,13 +14,16 @@ namespace OnlineShoppingPlatform.Middlewares
         {
             await _next(context);
 
-            string url = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path}{context.Request.QueryString}";
-            var ip = context.Connection.RemoteIpAddress?.ToString() ?? context.Request.Headers["X-Forwarded-For"].FirstOrDefault();
-            var userAgent = context.Request.Headers["User-Agent"].ToString();
-            int? userId = context.GetUserId();
+            
             var statusCode = context.Response.StatusCode;
+            
             if(statusCode >= 400)
             {
+                string url = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path}{context.Request.QueryString}";
+                var ip = context.Connection.RemoteIpAddress?.ToString() ?? context.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+                var userAgent = context.Request.Headers["User-Agent"].ToString();
+                int? userId = context.GetUserId();
+
                 var maintenance = new Maintenance(userId, userAgent, url, ip, statusCode);
                 maintenance.Create();
                 await maintenanceRepository.CreateAsync(maintenance, CancellationToken.None);

@@ -1,4 +1,5 @@
-﻿using Core.Events;
+﻿using Core.Abstracts;
+using Core.Events;
 using Domain.UserAggregate.Abstracts;
 using Domain.UserAggregate.Entities;
 using Domain.UserAggregate.Exceptions;
@@ -7,11 +8,12 @@ using MediatR;
 
 namespace Application.Commands.UserAggregate.CreateUser
 {
-    internal class CreateUserHandler(IUserRepository userRepository, IAccessTokenGenerator accessTokenGenerator, IPublisher publisher) : IRequestHandler<CreateUserDto, CreateUserResponseDto>
+    internal class CreateUserHandler(IUserRepository userRepository, IAccessTokenGenerator accessTokenGenerator, IPublisher publisher, IUnitOfWork unitOfWork) : IRequestHandler<CreateUserDto, CreateUserResponseDto>
     {
         private readonly IUserRepository _userRepository = userRepository;
         private readonly IAccessTokenGenerator _accessTokenGenerator = accessTokenGenerator;
         private readonly IPublisher _publisher = publisher;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
         public async Task<CreateUserResponseDto> Handle(CreateUserDto request, CancellationToken cancellationToken)
         {
@@ -27,6 +29,8 @@ namespace Application.Commands.UserAggregate.CreateUser
 
             var user = new User(email, password);
             await _userRepository.CreateAsync(user, cancellationToken);
+
+            await _unitOfWork.CommitAsync(cancellationToken);
 
             await _publisher.Publish(
                 new UserCreatedEvent(user.Email.Value, user.EmailConfirmationToken!.Value),

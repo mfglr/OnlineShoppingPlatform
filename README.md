@@ -2,7 +2,7 @@
 
 # İçindekiler
 
-1. [Kullanılan Teknoloji, Mimari ve Tasarımlar](#1-kullanılan-teknoloji-mimari-ve-tasarım)
+<a href="id1">1. Kullanılan Teknoloji, Mimari ve Tasarımlar</a>
    1.1 [Bu projede kullanılan teknoloji ve paketler](#1-1-bu-projede-kullanılan-teknoloji-ve-paketler)  
    1.2 [Bu projede kullanılan mimari ve tasarımlar](#1-2-bu-projede-kullanılan-mimari-ve-tasarımlar)  
 
@@ -48,7 +48,7 @@
 11. [AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method](#appexception-globalerrorhandlermiddleware-writeappexceptionasync-extention-method)
 
 
-## 1) Kullanılan Teknoloji, Mimari ve Tasarımlar
+<h2 id="id1">1) Kullanılan Teknoloji, Mimari ve Tasarımlar</h2>
 
 ### 1-1) Bu projede kullanılan teknoloji ve paketler
 <b><ul>

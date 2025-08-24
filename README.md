@@ -1,42 +1,88 @@
-<h1>Online Shopping Platform</h1>
+# Online Shopping Platform
 
-<h2>Kullanılan Teknoloji, Mimari ve Tasarımlar</h2>
+# İçindekiler
 
-<p>
-  <h3>Bu projede kullanılan teknoloji ve paketler</h3>
-  <b><ul>
-    <li>.Net 9</li>
-    <li>Entity Framework Core</li>
-    <li>MediatR</li>
-    <li>JWT</li>
-    <li>Kullanıcılara mail göndermek için Google’ın Gmail servisi (SMTP) </li>
-  </ul></b>
+1. [Kullanılan Teknoloji, Mimari ve Tasarımlar](#1-kullanılan-teknoloji-mimari-ve-tasarım)
+   1.1 [Bu projede kullanılan teknoloji ve paketler](#1-1-bu-projede-kullanılan-teknoloji-ve-paketler)  
+   1.2 [Bu projede kullanılan mimari ve tasarımlar](#1-2-bu-projede-kullanılan-mimari-ve-tasarımlar)  
 
-  <h3>Bu projede kullanılan mimari ve tasarımlar</h3>
-  <b>
-    <ul>
-      <li>Domain Driven Design (DDD)</li>
-      <li>Unit of Work Pattern</li>
-      <li>Generic Repository Pattern</li>
-      <li>Clean Architecture</li>
-    </ul>
-  </b>
-</p>
+2. [Modular Monolithic Mimari](#2-modular-monolithic-mimari)  
+   2.1 [Monolithic (Monolitik) Mimari Nedir](#2-1-monolithic-monolitik-mimari-nedir)  
+       2.1.1 [Monolitik Mimarinin Dezavantajları](#2-1-1-monolithic-monolitik-mimarinin-dezavantajları)  
+   2.2 [Micro Services Mimari Nedir](#2-2-micro-services-mimari-nedir)  
+       2.2.1 [Micro Services Mimarinin Avantajları](#2-2-1-micro-services-mimarinin-avantajları)  
+   2.3 [Modular Monolithic Mimari Nedir](#2-3-modular-monolithic-mimari-nedir)  
 
-<h2>Modular Monolithic Mimari</h2>
+3. [Domain Driven Design (DDD) Taktiksel Tasarımı](#3-domain-driven-design-ddd-nin-taktiksel-tasarımı)  
+   3.1 [Entity](#3-1-entity)  
+   3.2 [Value Object](#3-2-value-object)  
+   3.3 [Aggregate Root](#3-3-aggregate-root)  
+   3.4 [Domain Service](#3-4-domain-service)  
+   3.5 [Aggregate Root'lar Arası Haberleşme](#3-5-aggregate-roots-lar-arası-haberleşme)  
+
+4. [User Case'ler](#4-user-caseler)  
+   4.1 [Cart (Sepet)](#4-1-cart-sepet)  
+   4.2 [Order (Sipariş)](#4-2-order-sipariş)  
+   4.3 [Product (Ürün)](#4-3-product-ürün)  
+   4.4 [Category (Kategori)](#4-4-category-kategori)  
+   4.5 [User (Kullanıcı)](#4-5-user-kullanıcı)  
+
+5. [Distributed Transaction](#5-distributed-transaction)  
+   5.1 [Örnek: Sepetin Onaylanması](#5-1-örnek-sepetin-onaylanması)  
+
+6. [Data Protection](#6-data-protection)  
+   6.1 [PBKDF2 Algorithm](#6-1-pbkdf2-algorithm)  
+
+7. [Pagination ve ToPage() Extention](#7-pagination-ve-topage-extention)  
+   7.1 [Pagination Türler](#7-1-pagination-türler)  
+   7.2 [ToPage Extention](#7-2-topage-extention)  
+
+8. [Queryable Mappers ve Query Repositories](#8-queryable-mappers-and-query-repositories)  
+   8.1 [Queryable Mappers](#8-1-queryable-mappers)  
+   8.2 [Query Repository](#8-2-query-repository)  
+
+9. [Generic Repository Pattern](#9-generic-repository-pattern)  
+
+10. [Kimlik Doğrulama (Authentication) ve Yetkilendirme (Authorization)](#10-kimlik-doğrulamaauthentication-ve-yetkilendirmeauthorization)  
+
+<a href="#test">11. AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method </a>
+
+
+## 1) Kullanılan Teknoloji, Mimari ve Tasarımlar
+
+### 1-1) Bu projede kullanılan teknoloji ve paketler
+<b><ul>
+  <li>.Net 9</li>
+  <li>Entity Framework Core</li>
+  <li>MediatR</li>
+  <li>JWT</li>
+  <li>Kullanıcılara mail göndermek için Google’ın Gmail servisi (SMTP) </li>
+</ul></b>
+
+### 1-2) Bu projede kullanılan mimari ve tasarımlar
+<b>
+  <ul>
+    <li>Domain Driven Design (DDD)</li>
+    <li>Unit of Work Pattern</li>
+    <li>Generic Repository Pattern</li>
+    <li>Clean Architecture</li>
+  </ul>
+</b>
+
+## 2) Modular Monolithic Mimari
 
 <p>
   Proje monolithictir. Ancak ilerleyen zamanlarda artan kullanıcı sayısı nedeniyle performans iyleştirmelerine ihtiyaç duyacaktır. Bu nedenle proje monolithic mimari ve micro service mimari arasinda olan
   modular monolithic mimari olarak geliştirilmiştir.
 </p>
 
-<h3>Monolithic (Monolitik) Mimari Nedir</h3>
+### 2-1) Monolithic (Monolitik) Mimari Nedir
 <p>
   Monolithic, bir yazılımın tüm bileşenlerinin (UI, iş mantığı, veri erişimi vb.) tek bir bütün (single unit) olarak geliştirilip dağıtılması demektir.
   Yani; uygulama tek bir kod tabanında toplanır, tek bir build ve tek bir deployment paketi (ör. .exe, .jar, .war, .dll) vardır ve genellikle tek bir veritabanı kullanır.
 </p>
 
-<h4> Monolithic (Monolitik) Mimarinin Dezavantajları </h4>
+#### 2-1-1) Monolithic (Monolitik) Mimarinin Dezavantajları
 
 <p>
   <ul>
@@ -47,7 +93,7 @@
   </ul>
 </p>
 
-<h3>Micro Services Mimari Nedir</h3>
+### 2-2) Micro Services Mimari Nedir
 
 <p>
   Microservices, bir yazılım sistemini küçük, bağımsız ve birbirinden gevşek bağlı servislerden (services) oluşturan mimari yaklaşımdır.
@@ -56,7 +102,7 @@
   servisler genelde API (REST, gRPC, GraphQL) veya messaging (RabbitMQ, Kafka) ile haberleşir.
 </p>
 
-<h4>Micro Services Mimarinin Avantajları </h4>
+#### 2-2-1) Micro Services Mimarinin Avantajları
 
 <p>
   <ul>
@@ -67,7 +113,7 @@
   </ul>
 </p>
 
-<h3>Modular Monolithic Mimari Nedir</h3>
+### 2-3) Modular Monolithic Mimari Nedir
 <p>
   Modular Monolithic, tek bir uygulama olarak dağıtılan (monolith) ama içinde modüllere ayrılmış, bağımsız bir şekilde tasarlanmış bir mimari yaklaşımıdır.
   Yani; uygulama tek bir deploy birimi olarak çalışır, ancak kod tabanı bağımsız modüller halinde organize edilir (UserModule, ProductModule, OrderModule gibi),
@@ -78,26 +124,26 @@
   <b>Bir uygulama yeni geliştiriliyorsa ilk önce modular monolithic mimari ile geliştirilmeli.</b>
 </p>
 
-<h2>Domain Driven Design (DDD)' nin Taktiksel Tasarımı</h2>
+## 3) Domain Driven Design (DDD)' nin Taktiksel Tasarımı
 
 <p>
   Domain-Driven Design, yazılım geliştirmede iş alanını (domain) merkezine alan, karmaşık iş kurallarını yönetmeyi kolaylaştıran bir tasarım yaklaşımıdır.
 </p>
 
-<h3>Entity</h3>
+### 3-1) Entity
 <p>
   Kimliği ve state' i olan neslerdir. Örnek Order, OrderItem
 </p>
 
 <img width="1047" height="572" alt="entity" src="https://github.com/user-attachments/assets/9bab123e-2c4c-46e5-b6fb-e42be8eec26a" />
 
-<h3>Value Object</h3>
+### 3-2) Value Object
 <p>
   Kimliği ve state' i olmayan neslerdir. Örnek Phone Number
 </p>
 <img width="951" height="450" alt="ValueObject" src="https://github.com/user-attachments/assets/b9ee7be6-577c-447d-b24b-1e8f66331036" />
 
-<h3>Aggregate Root</h3>
+### 3-3) Aggregate Root
 
 <p>
   Bir veya daha fazla entity ve value object’in mantıksal olarak bir araya gelmiş grubudır.
@@ -106,7 +152,7 @@
 
 <img width="600" height="658" alt="aggregateRoot" src="https://github.com/user-attachments/assets/680489ce-4139-4350-b79b-3a4bad8e94e1" />
 
-<h3>Domain Service</h3>
+### 3-4) Domain Service
 <p>
   Bir işlemi gerçekleştirmek için birden fazla aggregate root' un state' ne ihtiyaç duduğumuzu düşünelim. Bu durumda Domain service yazılmalı. Örneğin sepete bir ürün eklemek isteyelim.
   Bu ürünün eklenebilmesi için yeterli stoğa sahip olması lazım. Yani ürünün stock bilgisine ihtiyacımız var.
@@ -114,7 +160,7 @@
 
 <img width="1271" height="422" alt="Screenshot 2025-08-23 205011" src="https://github.com/user-attachments/assets/284ad108-b103-45e3-96b4-ee1c6a1bc029" />
 
-<h3>Aggregate Root' lar arası haberleşme</h3>
+### 3-5) Aggregate Root' lar arası haberleşme
 <p>
   Bu projede Cart, Order, User, Product, ProductUserLike ve Category adında 6 adet aggregate root vardır. İleri her bir aggregate root un farklı bir micro service olacağı varsayılarak geliştirilme yapılmıştır.
   Bu nedenle aggregate root lar arasındaki haberleşme <b>event</b> ler ile yapılmıştır. Bu eventleri yayınlamak ve dinlemek için <bold>MediatR</bold> kütüphanesi kullanılmıştır.
@@ -125,13 +171,12 @@
 
 <img width="1462" height="497" alt="EventPublishing" src="https://github.com/user-attachments/assets/466c4267-d747-4d26-92a4-51bac70a0394" />
 
-
-<h2>User Case' ler</h2>
+## 4) User Case' ler
 <p>
   Bu projede basit bir e-ticaret sitesinin backend' de gerçekleşen bazı use caseler implemente edilmiştir. Bu projede implemente edilen use caseler aşağıdaki gibidir:
 </p>
 
-<h3>Cart (Sepet)</h3>
+### 4-1) Cart (Sepet)
 <ul>
   <li>Bir ürünün sepete eklenmesi.</li>
   <li>Bir ürünün sepetten silinmesi</li>
@@ -140,7 +185,7 @@
   <li>Sepetin onaylanması</li>
 </ul>
 
-<h3>Order (Sipariş)</h3>
+### 4-2) Order (Sipariş)
 <ul>
   <li>Siparişin iptal edilmesi</li>
   <li>Siparişlerin görüntülenmesi</li>
@@ -148,7 +193,7 @@
   <li>İptal edilen siparişlerin görüntülenmesi</li>
 </ul>
 
-<h3>Product (Ürün)</h3>
+### 4-3) Product (Ürün)
 <ul>
   <li>Bir ürünün admin tarafından oluşturulması</li>
   <li>Bir ürünün adının admin tarafından değiştirilmesi</li>
@@ -162,7 +207,7 @@
   <li>Kullanıcının beğendiği ürünleri görüntülemesi</li>
 </ul>
 
-<h3>Category (Kategori)</h3>
+### 4-4) Category (Kategori)
 <ul>
   <li>Bir categorinin admin tarafından oluşturulması</li>
   <li>Bir categori adının admin tarafından güncellenmesi</li>
@@ -170,7 +215,7 @@
   <li>Tüm kategorilerin görüntülenmesi</li>
 </ul>
 
-<h3>User (Kullanıcı)</h3>
+### 4-5) User (Kullanıcı)
 <ul>
   <li>Kullanıcının oluşturulması</li>
   <li>Kullanıcının adını güncellemesi</li>
@@ -187,7 +232,7 @@
   <li>Kullanıcının hesabını silmesi</li>
 </ul>
 
-<h2>Distributed Transaction</h2>
+## 5) Distributed Transaction
 <p>
   Distributed Transaction, birden fazla bağımsız veri kaynağı (ör. farklı veritabanları, microservice’ler) üzerinde tek bir işlem (transaction) yürütülmesidir.
   Normal bir transaction:
@@ -207,7 +252,7 @@
   bir iş adımı (action) yapar, eğer başarısız olursa daha önceki adımlar için bir telafi (compensation) işlemi çalıştırılır.
 </p>
 
-<h3>Sepetin Onaylanması</h3>
+### 5-1) Örnek: Sepetin Onaylanması
 
 <p>
   Sepet onaylandığında kullanıcı sepetteki ürünleri satın alma niyetini gösterir. Dolayısıyla sepetın boşaltılması ve alınınan ürünlerin stoklarının satın alınan ürün kadar azaltılması gerekir.
@@ -221,14 +266,14 @@
 
 <img width="875" height="680" alt="confırmCart" src="https://github.com/user-attachments/assets/afdb1084-8cd6-4d9f-8cc9-ab30e85a3c78" />
 
-<h2>Data Protection</h2>
+## 6) Data Protection
 
 <p>
   Bu projede şifreleri ve tokenları güvenle veri tabanında saklamak için PBKDF2 algoritması kullanıldı.
 </p>
 
-<h3>PBKDF2 Algorithm</h3>
-<p >
+### 6-1) PBKDF2 Algorithm
+<p>
   PBKDF2, zayıf/parola tabanlı girdilerden güvenli anahtarlar üretmek için tasarlanmış bir anahtar türetme fonksiyonudur.
 </p>
 
@@ -253,20 +298,20 @@
 </ul>
 
 
-<h2>Pagination ve ToPage() Extention</h2>
+## 7) Pagination ve ToPage() Extention
 
 <p>
   “Pagination” (sayfalama), genellikle bir veri kümesinin tamamını tek seferde göstermek yerine, küçük parçalara veya sayfalara bölerek sunma yöntemidir. Bu, özellikle web uygulamalarında veya büyük veri tabanlarında kullanılır. Amaç hem performansı artırmak hem de kullanıcı deneyimini iyileştirmektir.
 </p>
 
-<h3>Pagination Türler</h3>
+### 7-1) Pagination Türler
 
 <p>
   <b>Offset-based Pagination:</b> Belirli bir başlangıç noktası ve limit kullanılır. Örn: SQL’de LIMIT 20 OFFSET 40. </br>
   <b>Cursor-based Pagination:</b> Her kaydın benzersiz bir işaretçisi (cursor) kullanılır. Büyük veri ve sürekli güncellenen listelerde daha etkilidir.
 </p>
 
-<h3>ToPage Extention</h3>
+### 7-2) ToPage Extention
 
 <p>
   ToPage() extention, IQueryable<T> türündeki veri sorgularına sayfalama (pagination) özelliği ekleyen bir extension method’tur. Cursor-based pagination mantığını kullanır ve verileri artan veya azalan sırada sayfalara bölebilir.
@@ -298,9 +343,9 @@
 
 <img width="843" height="55" alt="Page" src="https://github.com/user-attachments/assets/002d048a-1820-4d51-931b-ccfc552a1c15" />
 
-<h2>Queryable Mappers And Query Repositories</h2>
+## 8) Queryable Mappers And Query Repositories
 
-<h3>Queryable Mappers</h3>
+### 8-1) Queryable Mappers
 <p>
   Entity den DTO ya mapping yapand extention methodlardır. Bir IQueryable&lt;TEntity&gt; alıp, IQueryable&lt;Dto&gt; döndür.
   Böylece veritabanında LINQ query çalıştırılırken, gereksiz dataların çekilmesi engellenir.
@@ -308,7 +353,7 @@
 
 <img width="1417" height="673" alt="QueryableMapper" src="https://github.com/user-attachments/assets/0f83b106-22a0-44f5-ad1c-ac6bd7632648" />
 
-<h3>Query Repository</h3>
+### 8-2) Query Repository
 
 <p>
   Query Repository' ler ise 0Read-only, performans odaklı, DTO veya projection döndüren, veri okuma işlemlerini yöneten repository' lerdir.
@@ -316,7 +361,7 @@
 
 <img width="1137" height="727" alt="QueryRepository" src="https://github.com/user-attachments/assets/8b0eae72-fc46-475a-a3e3-bb94ee02e8dd" />
 
-<h2>Generic Repository Pattern</h2>
+## 9) Generic Repository Pattern
 
 <p>
   <b>Repository Pattern</b>, veri tabanına erişim kodlarını (CRUD işlemleri gibi) soyutlayarak, domain veya business katmanını veri erişim detaylarından ayırır.
@@ -330,7 +375,7 @@ Yani her entity için ayrı repository yazmak yerine, tek bir generic repository
 <img width="1126" height="473" alt="genericRepository" src="https://github.com/user-attachments/assets/36d76390-21a1-40b1-8853-fae79e6dc4d4" />
 
 
-<h2>Kimlik Doğrulama(Authentication) ve Yetkilendirme(Authorization)</h2>
+## 10) Kimlik Doğrulama(Authentication) ve Yetkilendirme(Authorization)
 
 <p>
   Kimlik doğrulama ve yetkilendirme için, JSON Web Token (JWT) ve Refresh Token çifti kullanılmıştır. JWT, kullanıcının kimliğini veya yetkilerini temsil eden, imzalanmış bir JSON nesnesidir.
@@ -340,9 +385,19 @@ Yani her entity için ayrı repository yazmak yerine, tek bir generic repository
 <img width="1247" height="647" alt="accessTokenGenerator" src="https://github.com/user-attachments/assets/d3dccb87-f618-44e3-9cb3-484fd4b72b96" />
 
 
+<h2 id="test">AppException, GlobalErrorHandlerMiddleware, WriteAppExceptionAsync Extention Method</h2>
 
-  
+<p>
+  AppException, Exception sınıfından miras alan ve hata kodu (status code)' nu saklayan bir sınıftır. WriteAppExceptionAsync extention methodu ise HttpContext
+  nesnesi için genişletilmiş ve AppException' ı HttpContext nesnesinin response' ına yazan methoddur. GlobalErrorHandlerMiddleware ise tüm request pipline' ni dinleyen
+  ve hataları handle eden bir middleware' dir.
+</p>
 
+<img width="1017" height="108" alt="AppExceptıon" src="https://github.com/user-attachments/assets/dfcd7ca8-86d8-41e2-87b2-0574178ee9c3" />
+
+<img width="1046" height="230" alt="extentions" src="https://github.com/user-attachments/assets/fccdc1a4-981a-43d5-9e25-17624ae64e8d" />
+
+<img width="871" height="490" alt="GlobalErrorHandlıng" src="https://github.com/user-attachments/assets/628a0843-f15f-4985-a272-da5afd49128e" />
 
 
 
